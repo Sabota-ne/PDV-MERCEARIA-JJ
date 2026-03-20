@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>PDV Pro — Mercearia</title>
+  <meta name="theme-color" content="#0f1117" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!--
+    ════════════════════════════════════════════════════════
+    ORDEM DOS SCRIPTS — CRÍTICA, NÃO ALTERAR
+    ════════════════════════════════════════════════════════
+
+    1. Firebase CDN (compat v9)       ← window.firebase disponível
+    2. firebase.js                    ← window.FirebaseDB disponível
+    3. React + ReactDOM               ← window.React disponível
+    4. Babel standalone               ← transpila JSX em tempo real
+    5. pdv-system.jsx (type=text/babel) ← executa depois do Babel
+
+    Se inverter 1/2 com 4/5: "FirebaseDB is not defined"
+    Se inverter 1 com 2: "firebase is not defined"
+  -->
+
+  <!-- 1. Firebase v9 compat — NÃO trocar por módulos ES import -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <!-- 2. Configuração e API do Firestore (edite firebase.js com suas credenciais) -->
+  <script src="firebase.js"></script>
+
+  <!-- 3. React 18 -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+  <!-- 4. Babel (transpila JSX no browser — sem build step necessário) -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body, #root { min-height: 100vh; background: #0f1117; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- 5. App PDV — transpilado pelo Babel acima -->
+  <script type="text/babel" src="pdv-system.jsx"></script>
+</body>
+</html>
